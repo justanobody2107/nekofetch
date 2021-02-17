@@ -22,9 +22,11 @@ url=$(curl -fsSL "$imgurl" | jq -r ".url")
 curl -fsSLo "$tmpfile.jpg" "$url"
 if [ "$TERM" = "xterm-kitty" ]; then
     neofetch --kitty "$tmpfile.jpg"
+    neofetch --clean
 else
     clear
     neofetch --jp2a "$tmpfile.jpg"  --crop_mode fill
+    neofetch --clean
 fi
 
 rm "$tmpfile.jpg"
